@@ -3,15 +3,22 @@
 
 ## Steps to run the project:
 Step 1: Cloning the Repository:
+```bash
 git clone https://github.com/priyankaba15/596_individual_proj.git
 cd 596_individual_proj
+```
+
 
 Step 2: Creating a virtual environment:
+```bash
 python3 -m venv myenv
 source myenv/bin/activate
+```
 
 Step 3: To install Required packages:
+```bash
 pip install -r requirements.txt
+```
 
 ## I have the following structure for the project:
 
@@ -22,20 +29,36 @@ pip install -r requirements.txt
 
 ## How to Run the Model:
 Run the following command to start the server:
-    python server_onnx.py
+```bash
+ python server_onnx.py
+ OR python3 server_onnx.py
+```
 
 Once launched, you can register the model on the rescue box after assigning an IP address and port.
+
+## Using the CLI:
+In app_onnx.py, update the values of folder_path and model_path to match the locations where you saved them on your system.
+
+After modifying the paths, run the following command:
+```bash
+python3 app_onnx.py
+OR python app_onnx.py
+```
+
+The code processes the test images and determines whether each image indicates the presence of Down Syndrome or not.
 
 ## Keras to ONNX Conversion:
 To export keras to onnx we use the tf2onnx.
 
 ## Code used to convert keras model to onnx:
 
+```bash
 import tf2onnx
+
 spec = (tf.TensorSpec((None, 250, 250, 3), tf.float32, name="input"),)  
 onnx_model, _ = tf2onnx.convert.from_keras(self.model, input_signature=spec, opset=13)
 with open(onnx_model_path, "wb") as f:
 f.write(onnx_model.SerializeToString())
-
+```
 
 
